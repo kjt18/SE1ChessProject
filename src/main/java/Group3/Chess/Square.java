@@ -9,6 +9,7 @@ public class Square extends Label {
 	private Piece piece;
 	private int x;
 	private int y;
+	//finds the color of the square based on its x,y position
 	private String getPositionColor() {
 		return x % 2 == 1 && y % 2 == 1 || x % 2 == 0 && y % 2 == 0 ? "white" : "black";
 	}
@@ -23,6 +24,7 @@ public class Square extends Label {
 		setAlignment(Pos.CENTER);
 		setOnMouseClicked(e -> onMouseClicked());	
 	}
+	//these set the color of the square when there is a piece that can move to the square
 	public void setDefaultColor() {
 		setStyle(getPositionColor() == "white" ? "-fx-background-color: floralwhite;" : "-fx-background-color: darkgoldenrod;");	
 	}
@@ -61,6 +63,7 @@ public class Square extends Label {
 	public int getY() {
 		return y;
 	}
+	//handles the movement of pieces
 	private void onMouseClicked() {	
 		Piece previousPiece = board.getSelectedPiece();		
 		if (previousPiece != null) {
@@ -71,6 +74,7 @@ public class Square extends Label {
 				return;
 			}
 		}
+		//colors the squares that the piece can move to
 		if (piece != null) {
 			board.setSelectedPiece(piece);
 			for (Square s : piece.getMoves()) {

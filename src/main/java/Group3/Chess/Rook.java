@@ -12,7 +12,8 @@ public class Rook extends Piece {
 		return new Image(getColor() == "white" ? "rook_white.png" : "rook_black.png");
 	}
 	public List<Square> getMoves() {
-		List<Square> squares = new ArrayList<Square>();		
+		List<Square> squares = new ArrayList<Square>();
+		//finds the possible squares to the right
 		for (int i = getSquare().getX() + 1; i <= 7; i++) {	
 			Square square = getBoard().getSquare(i, getSquare().getY());
 			if (square.getPiece() == null) {
@@ -24,6 +25,7 @@ public class Rook extends Piece {
 				break;
 			}
 		}
+		//finds the possible squares to the left
 		for (int i = getSquare().getX() - 1; i >= 0; i--) {
 			Square square = getBoard().getSquare(i, getSquare().getY());
 			if (square.getPiece() == null) {
@@ -35,6 +37,7 @@ public class Rook extends Piece {
 				break;
 			}
 		}
+		//finds the possible squares upwards
 		for (int i = getSquare().getY() + 1; i <= 7; i++) {		
 			Square square = getBoard().getSquare(getSquare().getX(), i);
 			if (square.getPiece() == null) {
@@ -46,6 +49,7 @@ public class Rook extends Piece {
 				break;
 			}
 		}
+		//finds the possible squares downwards
 		for (int i = getSquare().getY() - 1; i >= 0; i--) {		
 			Square square = getBoard().getSquare(getSquare().getX(), i);
 			if (square.getPiece() == null) {

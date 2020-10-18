@@ -13,6 +13,7 @@ public class Bishop extends Piece {
 	}
 	public List<Square> getMoves() {
 		List<Square> squares = new ArrayList<Square>();	
+		//finds the possible squares diagonal top right
 		for (int i = 1; getSquare().getX() + i < 8 && getSquare().getY() - i >= 0; i++) {
 			Square square = getBoard().getSquare(getSquare().getX() + i, getSquare().getY() - i);
 			if (square.getPiece() == null) {
@@ -24,6 +25,7 @@ public class Bishop extends Piece {
 				break;
 			}
 		}
+		//finds the possible squares diagonal bottom left
 		for (int i = 1; getSquare().getX() - i >= 0 && getSquare().getY() + i < 8; i++) {
 			Square square = getBoard().getSquare(getSquare().getX() - i, getSquare().getY() + i);
 			if (square.getPiece() == null) {
@@ -35,6 +37,7 @@ public class Bishop extends Piece {
 				break;
 			}
 		}
+		//finds the possible squares diagonal bottom right
 		for (int i = 1; getSquare().getX() + i < 8 && getSquare().getY() + i < 8; i++) {
 			Square square = getBoard().getSquare(getSquare().getX() + i, getSquare().getY() + i);
 			if (square.getPiece() == null) {
@@ -46,6 +49,7 @@ public class Bishop extends Piece {
 				break;
 			}
 		}
+		//finds the possible squares diagonal top left
 		for (int i = 1; getSquare().getX() - i >= 0 && getSquare().getY() - i >= 0; i++) {
 			Square square = getBoard().getSquare(getSquare().getX() - i, getSquare().getY() - i);
 			if (square.getPiece() == null) {

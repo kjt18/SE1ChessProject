@@ -11,10 +11,12 @@ import javafx.stage.Stage;
 public class Game extends Application {
 	@Override
 	public void start(Stage primaryStage) {
+		//creates the window
 		primaryStage.setTitle("Group3 : Chess");
 		primaryStage.setResizable(false);
 		Board board = new Board();
 		GridPane gp = new GridPane();
+		//creates the coordinate labels
 		for (int i = 0; i < 8; i++) {
 			gp.add(getRankLabel(i), 0, i + 1, 1, 1);
 			gp.add(getRankLabel(i), 9, i + 1, 1, 1);
@@ -28,7 +30,8 @@ public class Game extends Application {
 		Scene scene = new Scene(borderPane, 750, 750);
 		primaryStage.setScene(scene);
 		primaryStage.show();
-		board.placeTestPieces();
+		//places pieces on the board
+		board.placePieces();
 	}
 	private Label getRankLabel(int i) {
 		Label l = new Label(Integer.toString(8 - i));

@@ -11,6 +11,7 @@ public abstract class Piece {
 		this.board = board;
 		this.square = square;
 		this.color = color;
+		square.setPiece(this);
 	}
 	public boolean canMoveTo(Square square) {
 		return getMoves().contains(square);
@@ -38,6 +39,8 @@ public abstract class Piece {
 	public String getColor() {
 		return color;
 	}
+	//returns the image of the piece
 	public abstract Image getImage();
+	//return a list of squares that the piece can move to
 	public abstract List<Square> getMoves();
 }

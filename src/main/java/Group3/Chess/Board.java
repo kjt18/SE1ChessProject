@@ -26,17 +26,30 @@ public class Board extends GridPane {
 	public Square[] getSquares() {
 		return squares;
 	}
-	public void placeTestPieces() {
-		Bishop b1 = new Bishop(this, getSquare(3, 3), "black");
-		getSquare(3, 3).setPiece(b1);
-		
-		Bishop b2 = new Bishop(this, getSquare(6, 6), "white");
-		getSquare(6, 6).setPiece(b2);
-		
-		Rook r1 = new Rook(this, getSquare(1, 3), "black");
-		getSquare(1, 3).setPiece(r1);
-		
-		Rook r2 = new Rook(this, getSquare(2, 6), "white");
-		getSquare(2, 6).setPiece(r2);
+	public void placePieces() {
+		new Rook(this, getSquare(0, 7), "white");
+		new Rook(this, getSquare(7, 7), "white");
+		new Knight(this, getSquare(1, 7), "white");
+		new Knight(this, getSquare(6, 7), "white");
+		new Bishop(this, getSquare(2, 7), "white");
+		new Bishop(this, getSquare(5, 7), "white");
+		new Queen(this, getSquare(3, 7), "white");
+		new King(this, getSquare(4, 7), "white");
+		//places 4 pawns (max 8)
+		for (int i = 0; i < 4; i++) {
+			new Pawn(this, getSquare(i, 6), "white");
+		}
+		new Rook(this, getSquare(0, 0), "black");
+		new Rook(this, getSquare(7, 0), "black");
+		new Knight(this, getSquare(1, 0), "black");
+		new Knight(this, getSquare(6, 0), "black");
+		new Bishop(this, getSquare(2, 0), "black");
+		new Bishop(this, getSquare(5, 0), "black");
+		new Queen(this, getSquare(3, 0), "black");
+		new King(this, getSquare(4, 0), "black");		
+		//places 4 pawns (max 8)
+		for (int i = 0; i < 4; i++) {
+			new Pawn(this, getSquare(i, 1), "black");
+		}
 	}
 }
