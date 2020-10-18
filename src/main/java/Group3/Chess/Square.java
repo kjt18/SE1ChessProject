@@ -1,6 +1,8 @@
 package Group3.Chess;
 
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 
 public class Square extends Label {
 	private Board board;
@@ -18,15 +20,28 @@ public class Square extends Label {
 		setDefaultColor();
 		setMinSize(75, 75);
 		setMaxSize(75, 75);
+		setAlignment(Pos.CENTER);
+		setOnMouseClicked(e -> onMouseClicked());	
 	}
 	public void setDefaultColor() {
 		setStyle(getPositionColor() == "white" ? "-fx-background-color: floralwhite;" : "-fx-background-color: darkgoldenrod;");	
+	}
+	public void setMoveColor() {
+		setStyle(getPositionColor() == "white" ? "-fx-background-color: forestgreen;" : "-fx-background-color: green;");
+	}
+	public void setCaptureColor() {
+		setStyle(getPositionColor() == "white" ? "-fx-background-color: firebrick;" : "-fx-background-color: darkred;");
 	}
 	public void setBoard(Board board) {
 		this.board = board;
 	}
 	public void setPiece(Piece piece) {
 		this.piece = piece;
+		if (piece != null) {
+			setGraphic(new ImageView(piece.getImage()));
+		} else {
+			setGraphic(null);
+		}
 	}
 	public void setX(int x) {
 		this.x = x;
@@ -45,5 +60,28 @@ public class Square extends Label {
 	}
 	public int getY() {
 		return y;
+	}
+	private void onMouseClicked() {	
+		Piece previousPiece = board.getSelectedPiece();		
+		if (previousPiece != null) {
+			previousPiece.getMoves().forEach(Square::setDefaultColor);	
+			if (previousPiece.canMoveTo(this)) {
+				previousPiece.moveTo(this);
+				board.setSelectedPiece(null);
+				return;
+			}
+		}
+		if (piece != null) {
+			board.setSelectedPiece(piece);
+			for (Square s : piece.getMoves()) {
+				if (s.getPiece() != null) {
+					s.setCaptureColor();
+				} else {
+					s.setMoveColor();
+				}
+			}	
+		} else {
+			board.setSelectedPiece(null);
+		}
 	}
 }

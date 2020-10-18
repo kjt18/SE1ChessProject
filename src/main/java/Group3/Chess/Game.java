@@ -13,13 +13,7 @@ public class Game extends Application {
 	public void start(Stage primaryStage) {
 		primaryStage.setTitle("Group3 : Chess");
 		primaryStage.setResizable(false);
-		BorderPane borderPane = new BorderPane();
-		borderPane.setCenter(getChessBoard());
-		Scene scene = new Scene(borderPane, 750, 750);
-		primaryStage.setScene(scene);
-		primaryStage.show();	
-	}
-	private GridPane getChessBoard() {
+		Board board = new Board();
 		GridPane gp = new GridPane();
 		for (int i = 0; i < 8; i++) {
 			gp.add(getRankLabel(i), 0, i + 1, 1, 1);
@@ -27,9 +21,14 @@ public class Game extends Application {
 			gp.add(getFileLabel(i), i + 1, 0, 1, 1);
 			gp.add(getFileLabel(i), i + 1, 9, 1, 1);
 		}
-		gp.add(new Board(), 1, 1, 8, 8);
+		gp.add(board, 1, 1, 8, 8);
 		gp.setAlignment(Pos.CENTER);
-		return gp;
+		BorderPane borderPane = new BorderPane();
+		borderPane.setCenter(gp);
+		Scene scene = new Scene(borderPane, 750, 750);
+		primaryStage.setScene(scene);
+		primaryStage.show();
+		board.placeTestPieces();
 	}
 	private Label getRankLabel(int i) {
 		Label l = new Label(Integer.toString(8 - i));
