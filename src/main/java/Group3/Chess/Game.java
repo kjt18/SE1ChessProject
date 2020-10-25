@@ -26,18 +26,19 @@ public class Game extends Application {
 		Label title = new Label("Chess");
 		Button start = new Button("Start");
 		start.setOnAction(e -> primaryStage.setScene(game));
+		
 		CheckBox timer = new CheckBox("Timer");
 		timer.setIndeterminate(false);
 		OpponentMenu m1 = new OpponentMenu();
 		ColorMenu m2 = new ColorMenu();
 		HBox settings = new HBox(20);
 		settings.getChildren().addAll(timer, m1, m2);
+		
 		VBox vbox = new VBox(20);
 		vbox.setAlignment(Pos.CENTER);
 		vbox.setPadding(new Insets(20, 20, 90, 20));
 		vbox.getChildren().addAll(title, start, settings);
 		intro = new Scene(vbox);
-		
 		
 		//Game Scene
 		Board board = new Board();
