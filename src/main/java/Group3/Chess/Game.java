@@ -1,45 +1,19 @@
 package Group3.Chess;
 
 import javafx.application.Application;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Game extends Application {
-	
-	Scene intro, game;
 	@Override
 	public void start(Stage primaryStage) {
 		//creates the window
 		primaryStage.setTitle("Group3 : Chess");
 		primaryStage.setResizable(false);
-		
-		//Intro Scene
-		Label title = new Label("Chess");
-		Button start = new Button("Start");
-		start.setOnAction(e -> primaryStage.setScene(game));
-		CheckBox timer = new CheckBox("Timer");
-		timer.setIndeterminate(false);
-		OpponentMenu m1 = new OpponentMenu();
-		ColorMenu m2 = new ColorMenu();
-		HBox settings = new HBox(20);
-		settings.getChildren().addAll(timer, m1, m2);
-		VBox vbox = new VBox(20);
-		vbox.setAlignment(Pos.CENTER);
-		vbox.setPadding(new Insets(20, 20, 90, 20));
-		vbox.getChildren().addAll(title, start, settings);
-		intro = new Scene(vbox);
-		
-		
-		//Game Scene
 		Board board = new Board();
 		GridPane gp = new GridPane();
 		//creates the coordinate labels
@@ -53,8 +27,8 @@ public class Game extends Application {
 		gp.setAlignment(Pos.CENTER);
 		BorderPane borderPane = new BorderPane();
 		borderPane.setCenter(gp);
-		game = new Scene(borderPane, 750, 750);
-		primaryStage.setScene(intro);
+		Scene scene = new Scene(borderPane, 750, 750);
+		primaryStage.setScene(scene);
 		primaryStage.show();
 		//places pieces on the board
 		board.placePieces();
