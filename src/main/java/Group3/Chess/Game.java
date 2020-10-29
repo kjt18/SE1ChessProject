@@ -24,11 +24,15 @@ public class Game extends Application {
 		
 		//Intro Scene
 		Label title = new Label("Chess");
+		title.setStyle("-fx-font-family: verdana; -fx-font-size: 20pt; -fx-font-weight: bold; -fx-text-fill: white;");
+		
 		Button start = new Button("Start");
 		start.setOnAction(e -> primaryStage.setScene(game));
 		
 		CheckBox timer = new CheckBox("Timer");
 		timer.setIndeterminate(false);
+		timer.setStyle("-fx-font-family: verdana; -fx-text-fill: white");
+		
 		OpponentMenu m1 = new OpponentMenu();
 		ColorMenu m2 = new ColorMenu();
 		HBox settings = new HBox(20);
@@ -38,7 +42,9 @@ public class Game extends Application {
 		vbox.setAlignment(Pos.CENTER);
 		vbox.setPadding(new Insets(20, 20, 90, 20));
 		vbox.getChildren().addAll(title, start, settings);
+		
 		intro = new Scene(vbox);
+		intro.getStylesheets().addAll(this.getClass().getResource("IntroBackground.css").toExternalForm());
 		
 		//Game Scene
 		Board board = new Board();
