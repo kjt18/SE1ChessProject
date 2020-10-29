@@ -5,82 +5,91 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pawn extends Piece {
-	private int numSquares = 3;
-	private boolean isInitialMove = true;
 	public Pawn(Board board, Square square, String color) {
 		super(board, square, color);
 	}
 	public Image getImage() {
 		return new Image(getColor() == "white" ? "pawn_white.png" : "pawn_black.png");
 	}
-		public List<Square> getMoves() {
-			if (!isInitialMove) {
-				numSquares = 2;
-			}
-			if (this.getColor() == "white") {
-				List<Square> squares = new ArrayList<Square>();		
+	public List<Square> getMoves() {
+		if (this.getColor() == "white") {
+			List<Square> squares = new ArrayList<Square>();
+			if(getSquare().getY() > 0){ //ensures that the pawn is not at the opponents first row
+			
 				//finds the possible squares upwards, first move can be 2 squares, subsequent only 1
-				for (int i = getSquare().getY() - 1; i >= 7 - numSquares; i--) {
-					Square square = getBoard().getSquare(getSquare().getX(), i);
-					if (square.getPiece() == null) {
-						squares.add(square);
-					} else {
-						break;
-					}
+				Square square = getBoard().getSquare(getSquare().getX(), getSquare().getY() - 1);
+				if (square.getPiece() == null) {
+					squares.add(square);
+				}
+				if(getSquare().getY() == 6){ //if the pawn is in it's starting position
+					square = getBoard().getSquare(getSquare().getX(), getSquare().getY() - 2);
+				}
+				if (square.getPiece() == null && getBoard().getSquare(getSquare().getX(), getSquare().getY() - 1).getPiece() == null) { // cannot jump a piece on initial move
+					squares.add(square);
 				}
 				//finds the possible squares diagonal top right
-				Square square = getBoard().getSquare(getSquare().getX() + 1, getSquare().getY() - 1);
-				if (square.getPiece() != null) {
-					if (square.getPiece().getColor().compareTo(getColor()) != 0) {
-						squares.add(square);
+				if(getSquare().getX() < 7){ // ensures pawn is not looking beyond the edge of the board
+					square = getBoard().getSquare(getSquare().getX() + 1, getSquare().getY() - 1);
+					if (square.getPiece() != null) {
+						if (square.getPiece().getColor().compareTo(getColor()) != 0) {
+							squares.add(square);
+						}
 					}
 				}
 				//finds the possible squares diagonal top left
-				square = getBoard().getSquare(getSquare().getX() - 1, getSquare().getY() - 1);
-				if (square.getPiece() != null) {
-					if (square.getPiece().getColor().compareTo(getColor()) != 0) {
-						squares.add(square);
+				if(getSquare().getX() > 0){ // ensures pawn is not looking beyond the edge of the board
+					square = getBoard().getSquare(getSquare().getX() - 1, getSquare().getY() - 1);
+					if (square.getPiece() != null) {
+						if (square.getPiece().getColor().compareTo(getColor()) != 0) {
+							squares.add(square);
+						}
 					}
 				}
-				//TODO: promoting a pawn
-				//if(this.getY() == 0) {
-				//		
-				//}
 				//TODO: en passant
 				return squares;
 			}
-	 		else { //if piece is black
-			List<Square> squares = new ArrayList<Square>();		
-			//finds the possible squares downwards, first move can be 2 squares, subsequent only 1
-			for (int i = getSquare().getY() + 1; i <= numSquares; i++) {
-				Square square = getBoard().getSquare(getSquare().getX(), i);
+			else{
+				//TODO: implement pawn promotion
+				return squares;
+			}
+		} else { //if piece is black
+			List<Square> squares = new ArrayList<Square>();
+			if(getSquare().getY() < 7){
+				//finds the possible squares downwards, first move can be 2 squares, subsequent only 1
+				Square square = getBoard().getSquare(getSquare().getX(), getSquare().getY() + 1);
 				if (square.getPiece() == null) {
 					squares.add(square);
-				} else {
-					break;
 				}
-			}
-			//finds the possible squares diagonal top right
-				Square square = getBoard().getSquare(getSquare().getX() + 1, getSquare().getY() + 1);
-				if (square.getPiece() != null) {
-					if (square.getPiece().getColor().compareTo(getColor()) != 0) {
-						squares.add(square);
+				if(getSquare().getY() == 1){ //if the pawn is in it's starting position
+					square = getBoard().getSquare(getSquare().getX(), getSquare().getY() + 2);
+				}
+				if (square.getPiece() == null && getBoard().getSquare(getSquare().getX(), getSquare().getY() + 1).getPiece() == null) { // cannot jump a piece on initial move
+					squares.add(square);
+				}
+				//finds the possible squares diagonal top right
+				if(getSquare().getX() < 7){ // ensures pawn is not looking beyond the edge of the board
+					square = getBoard().getSquare(getSquare().getX() + 1, getSquare().getY() + 1);
+					if (square.getPiece() != null) {
+						if (square.getPiece().getColor().compareTo(getColor()) != 0) {
+							squares.add(square);
+						}
 					}
-				}
+				}	
 				//finds the possible squares diagonal top left
-				square = getBoard().getSquare(getSquare().getX() - 1, getSquare().getY() + 1);
-				if (square.getPiece() != null) {
-					if (square.getPiece().getColor().compareTo(getColor()) != 0) {
-						squares.add(square);
+				if(getSquare().getX() > 0){ // ensures pawn is not looking beyond the edge of the board
+					square = getBoard().getSquare(getSquare().getX() - 1, getSquare().getY() + 1);
+					if (square.getPiece() != null) {
+						if (square.getPiece().getColor().compareTo(getColor()) != 0) {
+							squares.add(square);
+						}
 					}
-				}
-			//TODO: promoting a pawn
-			//if(this.getY() == 7) {
-			//		
-			//}
-			//TODO: en passant
-			return squares;
+				}	
+				//TODO: en passant
+				return squares;
+			}else{
+				//TODO: implement pawn promotion
+				return squares;
+			}
 		}
-	
 	}
 }
