@@ -13,99 +13,83 @@ public class King extends Piece {
 	}
 	public List<Square> getMoves() {
 		List<Square> squares = new ArrayList<Square>();		
-			//finds the possible squares to the right
+		{	
+		//finds the possible squares to the right
 			Square square = getBoard().getSquare(getSquare().getX() + 1, getSquare().getY());
 			if (square.getPiece() == null) {
 				squares.add(square);
 			} else if (square.getPiece().getColor().compareTo(getColor()) != 0) {
 				squares.add(square);
-				break;
-			} else {
-				break;
 			}
+		}
 		
 			//finds the possible squares to the left
+		{
 			Square square = getBoard().getSquare(getSquare().getX() - 1, getSquare().getY());
 			if (square.getPiece() == null) {
 				squares.add(square);
 			} else if (square.getPiece().getColor().compareTo(getColor()) != 0) {
 				squares.add(square);
-				break;
-			} else {
-				break;
 			}
+		}
 
 			//finds the possible squares upwards
+		{
 			Square square = getBoard().getSquare(getSquare().getX(), getSquare().getY() + 1);
 			if (square.getPiece() == null) {
 				squares.add(square);
 			} else if (square.getPiece().getColor().compareTo(getColor()) != 0) {
 				squares.add(square);
-				break;
-			} else {
-				break;
 			}
+		}
 	
 			//finds the possible squares downwards
+		{
 			Square square = getBoard().getSquare(getSquare().getX(), getSquare().getY() - 1);
 			if (square.getPiece() == null) {
 				squares.add(square);
 			} else if (square.getPiece().getColor().compareTo(getColor()) != 0) {
 				squares.add(square);
-				break;
-			} else {
-				break;
 			}
+		}
 			
 		//finds the possible squares diagonal top right
+		{
 			Square square = getBoard().getSquare(getSquare().getX() + 1, getSquare().getY() - 1);
 			if (square.getPiece() == null) {
 				squares.add(square);
 			} else if (square.getPiece().getColor().compareTo(getColor()) != 0) {
 				squares.add(square);
-				break;
-			} else {
-				break;
 			}
-			
+		}
 		//finds the possible squares diagonal bottom left
+		{
 			Square square = getBoard().getSquare(getSquare().getX() - 1, getSquare().getY() + 1);
 			if (square.getPiece() == null) {
 				squares.add(square);
 			} else if (square.getPiece().getColor().compareTo(getColor()) != 0) {
 				squares.add(square);
-				break;
-			} else {
-				break;
 			}
+		}
 		
 		//finds the possible squares diagonal bottom right
+		{
 			Square square = getBoard().getSquare(getSquare().getX() + 1, getSquare().getY() + 1);
 			if (square.getPiece() == null) {
 				squares.add(square);
 			} else if (square.getPiece().getColor().compareTo(getColor()) != 0) {
 				squares.add(square);
-				break;
-			} else {
-				break;
 			}
 		}
 		//finds the possible squares diagonal top left
+		{
 			Square square = getBoard().getSquare(getSquare().getX() - 1, getSquare().getY() - 1);
 			if (square.getPiece() == null) {
 				squares.add(square);
 			} else if (square.getPiece().getColor().compareTo(getColor()) != 0) {
 				squares.add(square);
-				break;
-			} else {
-				break;
 			}
-		}	
-		
-		
-		
-		
-		
+		}			
 		return squares;
 	}
 }
