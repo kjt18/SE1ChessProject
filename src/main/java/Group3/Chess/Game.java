@@ -11,6 +11,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Game extends Application {
@@ -24,14 +25,14 @@ public class Game extends Application {
 		
 		//Intro Scene
 		Label title = new Label("Chess");
-		title.setStyle("-fx-font-family: verdana; -fx-font-size: 20pt; -fx-font-weight: bold; -fx-text-fill: white;");
+		title.setStyle("-fx-font-family: verdana; -fx-font-size: 20pt; -fx-font-weight: bold; -fx-text-fill: black; -fx-background-color: white");
 		
 		Button start = new Button("Start");
 		start.setOnAction(e -> primaryStage.setScene(game));
 		
-		CheckBox timer = new CheckBox("Timer");
+		CheckBox timer = new CheckBox("Timer ");
 		timer.setIndeterminate(false);
-		timer.setStyle("-fx-font-family: verdana; -fx-text-fill: white");
+		timer.setStyle("-fx-font-family: verdana; -fx-text-fill: black; -fx-background-color: white");
 		
 		OpponentMenu m1 = new OpponentMenu();
 		ColorMenu m2 = new ColorMenu();
