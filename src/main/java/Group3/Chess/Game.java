@@ -15,8 +15,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Game extends Application {
-	
-	Scene intro, game;
+	//TODO make scenes private
+	private Scene intro, game;
 	@Override
 	public void start(Stage primaryStage) {
 		//creates the window
