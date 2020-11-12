@@ -71,11 +71,12 @@ public class Square extends Label {
 			if (previousPiece.canMoveTo(this)) {
 				previousPiece.moveTo(this);
 				board.setSelectedPiece(null);
+				board.setTurnColor(board.getTurnColor().equals("white") ? "black" : "white");
 				return;
 			}
 		}
 		//colors the squares that the piece can move to
-		if (piece != null) {
+		if (piece != null && piece.getColor().equals(board.getTurnColor())) {
 			board.setSelectedPiece(piece);
 			for (Square s : piece.getMoves()) {
 				if (s.getPiece() != null) {

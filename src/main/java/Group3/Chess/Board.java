@@ -5,7 +5,9 @@ import javafx.scene.layout.GridPane;
 public class Board extends GridPane {
 	private Square[] squares = new Square[64];
 	private Piece selectedPiece;
+	private String turnColor;
 	public Board() {
+		turnColor = "white";
 		for (int i = 0; i < squares.length; i++) {
 			int x = i % 8;
 			int y = (i - x) / 8;
@@ -17,8 +19,14 @@ public class Board extends GridPane {
 	public void setSelectedPiece(Piece selectedPiece) {
 		this.selectedPiece = selectedPiece;
 	}
+	public void setTurnColor(String turnColor) {
+		this.turnColor = turnColor;
+	}
 	public Piece getSelectedPiece() {
 		return selectedPiece;
+	}
+	public String getTurnColor() {
+		return turnColor;
 	}
 	public Square getSquare(int x, int y) {
 		return squares[y * 8 + x];
@@ -35,7 +43,7 @@ public class Board extends GridPane {
 		new Bishop(this, getSquare(5, 7), "white");
 		new Queen(this, getSquare(3, 7), "white");
 		new King(this, getSquare(4, 7), "white");
-		//places 4 pawns (max 8)
+		//places 8 pawns (max 8)
 		for (int i = 0; i < 8; i++) {
 			new Pawn(this, getSquare(i, 6), "white");
 		}
@@ -47,7 +55,7 @@ public class Board extends GridPane {
 		new Bishop(this, getSquare(5, 0), "black");
 		new Queen(this, getSquare(3, 0), "black");
 		new King(this, getSquare(4, 0), "black");		
-		//places 4 pawns (max 8)
+		//places 8 pawns (max 8)
 		for (int i = 0; i < 8; i++) {
 			new Pawn(this, getSquare(i, 1), "black");
 		}
