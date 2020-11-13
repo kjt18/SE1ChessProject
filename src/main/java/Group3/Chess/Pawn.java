@@ -50,6 +50,9 @@ public class Pawn extends Piece {
 			}
 			else{
 				//TODO: implement pawn promotion
+				if (getSquare().getY() == 0){
+					//TODO: pop up Pawn Promotion Menu
+				}
 				return squares;
 			}
 		} else { //if piece is black
