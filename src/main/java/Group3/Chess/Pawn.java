@@ -1,5 +1,6 @@
 package Group3.Chess;
 
+import javafx.application.Application;
 import javafx.scene.image.Image;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +52,7 @@ public class Pawn extends Piece {
 			else{
 				//TODO: implement pawn promotion
 				if (getSquare().getY() == 0){
-					//TODO: pop up Pawn Promotion Menu
+					Application.launch(PawnPromotion.class);
 				}
 				return squares;
 			}
@@ -91,6 +92,9 @@ public class Pawn extends Piece {
 				return squares;
 			}else{
 				//TODO: implement pawn promotion
+				if (getSquare().getY() == 7){
+					//TODO: pop up Pawn Promotion Menu
+				}
 				return squares;
 			}
 		}

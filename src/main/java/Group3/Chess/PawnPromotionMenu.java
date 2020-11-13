@@ -5,7 +5,7 @@ import javafx.scene.control.MenuItem;
 
 public class PawnPromotionMenu extends MenuButton{
 	public PawnPromotionMenu() {
-		super("Choose Pieve");
+		super("Choose Piece");
 		MenuItem rook = new MenuItem("Rook");
 		MenuItem bishop = new MenuItem("Bishop");
 		MenuItem knight = new MenuItem("Knight");

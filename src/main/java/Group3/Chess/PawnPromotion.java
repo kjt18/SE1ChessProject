@@ -11,7 +11,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class PawnPromotion extends Application {
-	//TODO make scenes private
 	private Scene pawnPromotion;
 	@Override
 	public void start(Stage primaryStage) {
@@ -36,5 +35,9 @@ public class PawnPromotion extends Application {
 		vbox.getChildren().addAll(title, select, settings);
 		
 		pawnPromotion = new Scene(vbox);
+		
+		
+		primaryStage.setScene(pawnPromotion);
+		primaryStage.show();
 	}
 }
