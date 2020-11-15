@@ -43,7 +43,7 @@ public class Game extends Application {
 		vbox.getChildren().addAll(title, start, settings);
 		
 		intro = new Scene(vbox);
-		intro.getStylesheets().add("IntroBackground.css");
+		intro.getStylesheets().add("/IntroBackground.css");
 		
 		//Game Scene
 		Board board = new Board();
