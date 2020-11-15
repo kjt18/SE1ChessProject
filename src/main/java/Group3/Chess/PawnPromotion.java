@@ -27,7 +27,11 @@ public class PawnPromotion {
 		//button to select piece you have chosen from list
 		Button select = new Button("Select");
 		select.setOnAction(e -> {
-		pawnPromotionWindow.close();
+			//if(PawnPromotionMenu.getChoice() == "Pawn"){
+			//	new Pawn(this, this.getSquare(), this);
+				//Board.setSelectedPiece(Pawn, )
+			//}
+			pawnPromotionWindow.close();
 		});
 		
 		//generates the menu
