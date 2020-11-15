@@ -1,6 +1,5 @@
 package Group3.Chess;
 
-import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -9,35 +8,42 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.Modality;
 
-public class PawnPromotion extends Application {
-	private Scene pawnPromotion;
-	@Override
-	public void start(Stage primaryStage) {
+public class PawnPromotion {
+	
+	public static void displayPromotionPopup(){
+		Stage pawnPromotionWindow = new Stage();
+		pawnPromotionWindow.initModality(Modality.APPLICATION_MODAL);
+	
 		//creates the window
-		primaryStage.setTitle("Pawn Promotion");
-		primaryStage.setResizable(false);
+		pawnPromotionWindow.setTitle("Pawn Promotion");
+		pawnPromotionWindow.setResizable(false);
 		
-		//Intro Scene
+		//Promotion Scene setting title
 		Label title = new Label("Pawn Promotion");
 		title.setStyle("-fx-font-family: verdana; -fx-font-size: 20pt; -fx-font-weight: bold; -fx-text-fill: black; -fx-background-color: white");
 		
+		//button to select piece you have chosen from list
 		Button select = new Button("Select");
-		//start.setOnAction(e -> primaryStage.setScene(game));
+		select.setOnAction(e -> {
+		pawnPromotionWindow.close();
+		});
 		
+		//generates the menu
 		PawnPromotionMenu menu = new PawnPromotionMenu();
 		HBox settings = new HBox(20);
 		settings.getChildren().addAll(menu);
 		
+		//drawing the window to the screen
 		VBox vbox = new VBox(20);
 		vbox.setAlignment(Pos.CENTER);
 		vbox.setPadding(new Insets(20, 20, 90, 20));
 		vbox.getChildren().addAll(title, select, settings);
 		
-		pawnPromotion = new Scene(vbox);
+		Scene scene = new Scene(vbox);
 		
-		
-		primaryStage.setScene(pawnPromotion);
-		primaryStage.show();
+		pawnPromotionWindow.setScene(scene);
+		pawnPromotionWindow.show();
 	}
 }

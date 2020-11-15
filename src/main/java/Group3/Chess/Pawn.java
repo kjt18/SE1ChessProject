@@ -52,7 +52,7 @@ public class Pawn extends Piece {
 			else{
 				//TODO: implement pawn promotion
 				if (getSquare().getY() == 0){
-					Application.launch(PawnPromotion.class);
+					PawnPromotion.displayPromotionPopup();
 				}
 				return squares;
 			}
@@ -93,7 +93,7 @@ public class Pawn extends Piece {
 			}else{
 				//TODO: implement pawn promotion
 				if (getSquare().getY() == 7){
-					//TODO: pop up Pawn Promotion Menu
+					PawnPromotion.displayPromotionPopup();
 				}
 				return squares;
 			}
