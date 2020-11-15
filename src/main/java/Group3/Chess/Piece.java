@@ -20,6 +20,9 @@ public abstract class Piece {
 		this.square.setPiece(null);
 		square.setPiece(this);
 		setSquare(square);
+		if (getSquare().getY() == 0 || getSquare().getY() == 7){
+			PawnPromotion.displayPromotionPopup();
+		}
 	}
 	public void setBoard(Board board) {
 		this.board = board;
