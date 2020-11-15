@@ -11,7 +11,6 @@ public class PawnPromotionMenu extends MenuButton{
 		MenuItem bishop = new MenuItem("Bishop");
 		MenuItem knight = new MenuItem("Knight");
 		MenuItem queen = new MenuItem("Queen");
-		MenuItem king = new MenuItem("King");
-		this.getItems().addAll(pawn, rook, bishop, knight, queen, king);
+		this.getItems().addAll(pawn, rook, bishop, knight, queen);
 	}
 }
