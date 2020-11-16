@@ -50,11 +50,9 @@ public class Pawn extends Piece {
 				return squares;
 			}
 			else{
-				//TODO: implement pawn promotion
 				if (getSquare().getY() == 0){
 					PawnPromotion promotor = new PawnPromotion(this);
 					promotor.displayPromotionPopup();
-					//TODO: Remove this pawn from board
 				}
 				return squares;
 			}
@@ -93,11 +91,9 @@ public class Pawn extends Piece {
 				//TODO: en passant
 				return squares;
 			}else{
-				//TODO: implement pawn promotion
 				if (getSquare().getY() == 7){
 					PawnPromotion promotor = new PawnPromotion(this);
 					promotor.displayPromotionPopup();
-					//TODO: Remove this pawn from board
 				}
 				return squares;
 			}

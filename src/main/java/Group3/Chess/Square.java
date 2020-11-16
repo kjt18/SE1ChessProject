@@ -71,6 +71,12 @@ public class Square extends Label {
 			if (previousPiece.canMoveTo(this)) {
 				previousPiece.moveTo(this);
 				board.setSelectedPiece(null);
+				if (previousPiece instanceof Pawn){
+					if (previousPiece.getSquare().getY() == 0 || previousPiece.getSquare().getY() == 7) {
+						PawnPromotion promotor = new PawnPromotion((Pawn)previousPiece);
+						promotor.displayPromotionPopup();
+					}
+				}
 				return;
 			}
 		}

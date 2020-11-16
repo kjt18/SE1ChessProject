@@ -20,7 +20,6 @@ public abstract class Piece {
 		this.square.setPiece(null);
 		square.setPiece(this);
 		setSquare(square);
-		
 	}
 	public void setBoard(Board board) {
 		this.board = board;
