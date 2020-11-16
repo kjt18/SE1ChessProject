@@ -50,10 +50,6 @@ public class Pawn extends Piece {
 				return squares;
 			}
 			else{
-				if (getSquare().getY() == 0){
-					PawnPromotion promotor = new PawnPromotion(this);
-					promotor.displayPromotionPopup();
-				}
 				return squares;
 			}
 		} else { //if piece is black
@@ -91,10 +87,6 @@ public class Pawn extends Piece {
 				//TODO: en passant
 				return squares;
 			}else{
-				if (getSquare().getY() == 7){
-					PawnPromotion promotor = new PawnPromotion(this);
-					promotor.displayPromotionPopup();
-				}
 				return squares;
 			}
 		}
