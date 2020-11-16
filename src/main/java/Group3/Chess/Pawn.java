@@ -51,9 +51,11 @@ public class Pawn extends Piece {
 			}
 			else{
 				//TODO: implement pawn promotion
-				//if (getSquare().getY() == 0){
-					//PawnPromotion.displayPromotionPopup();
-				//}
+				if (getSquare().getY() == 0){
+					PawnPromotion promotor = new PawnPromotion(this);
+					promotor.displayPromotionPopup();
+					//TODO: Remove this pawn from board
+				}
 				return squares;
 			}
 		} else { //if piece is black
@@ -92,9 +94,11 @@ public class Pawn extends Piece {
 				return squares;
 			}else{
 				//TODO: implement pawn promotion
-				//if (getSquare().getY() == 7){
-					//PawnPromotion.displayPromotionPopup();
-				//}
+				if (getSquare().getY() == 7){
+					PawnPromotion promotor = new PawnPromotion(this);
+					promotor.displayPromotionPopup();
+					//TODO: Remove this pawn from board
+				}
 				return squares;
 			}
 		}

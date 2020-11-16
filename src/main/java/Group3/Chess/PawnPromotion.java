@@ -11,8 +11,11 @@ import javafx.stage.Stage;
 import javafx.stage.Modality;
 
 public class PawnPromotion {
-	
-	public static void displayPromotionPopup(){
+	private Piece pawn;
+	public PawnPromotion(Piece pawn) {
+		this.pawn = pawn;
+	}
+	public void displayPromotionPopup(){
 		Stage pawnPromotionWindow = new Stage();
 		pawnPromotionWindow.initModality(Modality.APPLICATION_MODAL);
 	
@@ -27,10 +30,23 @@ public class PawnPromotion {
 		//button to select piece you have chosen from list
 		Button select = new Button("Select");
 		select.setOnAction(e -> {
-			//if(PawnPromotionMenu.getChoice() == "Pawn"){
-			//	new Pawn(this, this.getSquare(), this);
-				//Board.setSelectedPiece(Pawn, )
-			//}
+			switch(PawnPromotionMenu.getChoice()) {
+			case "Rook":
+				new Rook(pawn.getBoard(), pawn.getSquare(), pawn.getColor());
+				break;
+			case "Bishop":
+				new Bishop(pawn.getBoard(), pawn.getSquare(), pawn.getColor());
+				break;
+			case "Knight":
+				new Knight(pawn.getBoard(), pawn.getSquare(), pawn.getColor());
+				break;
+			case "Queen":
+				new Queen(pawn.getBoard(), pawn.getSquare(), pawn.getColor());
+				break;
+			default:
+				//Should never occur
+				System.exit(1);
+			}
 			pawnPromotionWindow.close();
 		});
 		

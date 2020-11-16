@@ -35,7 +35,7 @@ public class Board extends GridPane {
 		new Bishop(this, getSquare(5, 7), "white");
 		new Queen(this, getSquare(3, 7), "white");
 		new King(this, getSquare(4, 7), "white");
-		//places 4 pawns (max 8)
+		//places 8 pawns (max 8)
 		for (int i = 0; i < 8; i++) {
 			new Pawn(this, getSquare(i, 6), "white");
 		}
@@ -47,7 +47,7 @@ public class Board extends GridPane {
 		new Bishop(this, getSquare(5, 0), "black");
 		new Queen(this, getSquare(3, 0), "black");
 		new King(this, getSquare(4, 0), "black");		
-		//places 4 pawns (max 8)
+		//places 8 pawns (max 8)
 		for (int i = 0; i < 8; i++) {
 			new Pawn(this, getSquare(i, 1), "black");
 		}
