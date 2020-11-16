@@ -5,7 +5,9 @@ import javafx.scene.layout.GridPane;
 public class Board extends GridPane {
 	private Square[] squares = new Square[64];
 	private Piece selectedPiece;
+	private String turnColor;
 	public Board() {
+		turnColor = "white";
 		for (int i = 0; i < squares.length; i++) {
 			int x = i % 8;
 			int y = (i - x) / 8;
@@ -17,8 +19,14 @@ public class Board extends GridPane {
 	public void setSelectedPiece(Piece selectedPiece) {
 		this.selectedPiece = selectedPiece;
 	}
+	public void setTurnColor(String turnColor) {
+		this.turnColor = turnColor;
+	}
 	public Piece getSelectedPiece() {
 		return selectedPiece;
+	}
+	public String getTurnColor() {
+		return turnColor;
 	}
 	public Square getSquare(int x, int y) {
 		return squares[y * 8 + x];
