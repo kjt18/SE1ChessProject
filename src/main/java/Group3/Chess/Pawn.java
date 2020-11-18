@@ -1,5 +1,6 @@
 package Group3.Chess;
 
+import javafx.application.Application;
 import javafx.scene.image.Image;
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +50,6 @@ public class Pawn extends Piece {
 				return squares;
 			}
 			else{
-				//TODO: implement pawn promotion
 				return squares;
 			}
 		} else { //if piece is black
@@ -87,7 +87,6 @@ public class Pawn extends Piece {
 				//TODO: en passant
 				return squares;
 			}else{
-				//TODO: implement pawn promotion
 				return squares;
 			}
 		}
