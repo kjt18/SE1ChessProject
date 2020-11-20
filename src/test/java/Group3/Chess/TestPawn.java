@@ -185,4 +185,30 @@ public class TestPawn {
 		//show playerPawn can move to (capture) piece diagonally up and to the left
 		assertTrue(playerPawn.getMoves().contains(testBoard.getSquare(0, 5)));
 	}
+	@Test
+	void WhitePawnPromotionTest() {
+		Board testBoard = new Board();
+		testBoard.placePieces();	
+		Square testSquare = testBoard.getSquare(1, 1);
+		Pawn testPawn = new Pawn(testBoard, testSquare, "white");
+		
+		testSquare = testBoard.getSquare(1, 0);
+		testPawn.moveTo(testSquare);
+		//TODO: test the pawn promotion menu
+		//TODO: test the piece selection
+		//TODO: test that the selected piece is in the square
+	}
+	@Test
+	void BlackPawnPromotionTest() {
+		Board testBoard = new Board();
+		testBoard.placePieces();	
+		Square testSquare = testBoard.getSquare(1, 6);
+		Pawn testPawn = new Pawn(testBoard, testSquare, "black");
+		
+		testSquare = testBoard.getSquare(1, 7);
+		testPawn.moveTo(testSquare);
+		//TODO: test the pawn promotion menu
+		//TODO: test the piece selection
+		//TODO: test that the selected piece is in the square
+	}
 }
