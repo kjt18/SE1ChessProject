@@ -18,6 +18,7 @@ class KingTest {
 		assertTrue(testPiece instanceof King);
 		assertEquals("white", testPiece.getColor());
 	}
+	@Test
 	void BlackSideContainsKing() {
 		Board testBoard = new Board();
 		testBoard.placePieces();		
