@@ -10,9 +10,11 @@ public class TestPawn {
 		new AppLauncher().start();
 	}	
 	@Test
-	void secondRowFromTopShouldHavePawns() {
+	void secondRowFromTopShouldHavePawnsTest() {
 		Board testBoard = new Board();
 		testBoard.placePieces();
+		
+		//test that there is a pawn in each square in row 2
 		for(int i = 0; i <= 7; i++){
 			Square testSquare = testBoard.getSquare(0, 1);
 			Piece testPiece = testSquare.getPiece();
@@ -23,9 +25,11 @@ public class TestPawn {
 		}	
 	}
 	@Test
-	void secondRowFromBottomShouldHavePawns() {
+	void secondRowFromBottomShouldHavePawnsTest() {
 		Board testBoard = new Board();
-		testBoard.placePieces();		
+		testBoard.placePieces();
+		
+		//test that there is a pawn in each square in row 6
 		for(int i = 0; i <= 7; i++){
 			Square testSquare = testBoard.getSquare(0, 6);
 			Piece testPiece = testSquare.getPiece();
@@ -98,6 +102,7 @@ public class TestPawn {
 		testSquare = testBoard.getSquare(1, 2);
 		testPawn.moveTo(testSquare);
 		
+		//test to see if pawn can move down one square but not two
 		assertTrue(testPawn.getMoves().contains(testBoard.getSquare(1, 3)));
 		assertFalse(testPawn.getMoves().contains(testBoard.getSquare(1, 4)));
 	}
@@ -110,8 +115,33 @@ public class TestPawn {
 		testSquare = testBoard.getSquare(1, 5);
 		testPawn.moveTo(testSquare);
 		
+		//test to see if pawn can move up one square but not two
 		assertTrue(testPawn.getMoves().contains(testBoard.getSquare(1, 4)));
 		assertFalse(testPawn.getMoves().contains(testBoard.getSquare(1, 3)));
+	}
+	@Test
+	void BlackPawnCannotMoveUpTest() {
+		Board testBoard = new Board();
+		testBoard.placePieces();	
+		Square testSquare = testBoard.getSquare(1, 1);
+		Piece testPawn = testSquare.getPiece();
+		testSquare = testBoard.getSquare(1, 2);
+		testPawn.moveTo(testSquare);
+		
+		//test to see if pawn can move up
+		assertFalse(testPawn.getMoves().contains(testBoard.getSquare(1, 1)));
+	}
+	@Test
+	void WhitePawnCannotMoveDownTest() {
+		Board testBoard = new Board();
+		testBoard.placePieces();	
+		Square testSquare = testBoard.getSquare(1, 6);
+		Piece testPawn = testSquare.getPiece();
+		testSquare = testBoard.getSquare(1, 5);
+		testPawn.moveTo(testSquare);
+		
+		//test to see if pawn can move down
+		assertFalse(testPawn.getMoves().contains(testBoard.getSquare(1, 6)));
 	}
 	@Test
 	void BlackPawnCanCapturTest() {
