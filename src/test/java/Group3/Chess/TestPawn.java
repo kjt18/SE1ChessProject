@@ -16,7 +16,7 @@ public class TestPawn {
 		
 		//test that there is a pawn in each square in row 2
 		for(int i = 0; i <= 7; i++){
-			Square testSquare = testBoard.getSquare(0, 1);
+			Square testSquare = testBoard.getSquare(i, 1);
 			Piece testPiece = testSquare.getPiece();
 			//Checks if the piece in the select square is an instance of a pawn
 			assertTrue(testPiece instanceof Pawn);
@@ -31,7 +31,7 @@ public class TestPawn {
 		
 		//test that there is a pawn in each square in row 6
 		for(int i = 0; i <= 7; i++){
-			Square testSquare = testBoard.getSquare(0, 6);
+			Square testSquare = testBoard.getSquare(i, 6);
 			Piece testPiece = testSquare.getPiece();
 			//Checks if the piece in the select square is an instance of a pawn
 			assertTrue(testPiece instanceof Pawn);
