@@ -1,6 +1,5 @@
 package Group3.Chess;
 
-import javafx.application.Application;
 import javafx.scene.image.Image;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,8 +12,8 @@ public class Pawn extends Piece {
 		return new Image(getColor() == "white" ? "pawn_white.png" : "pawn_black.png");
 	}
 	public List<Square> getMoves() {
+		List<Square> squares = new ArrayList<Square>();
 		if (this.getColor() == "white") {
-			List<Square> squares = new ArrayList<Square>();
 			if(getSquare().getY() > 0){ //ensures that the pawn is not at the opponents first row
 			
 				//finds the possible squares upwards, first move can be 2 squares, subsequent only 1
@@ -47,13 +46,8 @@ public class Pawn extends Piece {
 					}
 				}
 				//TODO: en passant
-				return squares;
-			}
-			else{
-				return squares;
 			}
 		} else { //if piece is black
-			List<Square> squares = new ArrayList<Square>();
 			if(getSquare().getY() < 7){
 				//finds the possible squares downwards, first move can be 2 squares, subsequent only 1
 				Square square = getBoard().getSquare(getSquare().getX(), getSquare().getY() + 1);
@@ -85,10 +79,8 @@ public class Pawn extends Piece {
 					}
 				}	
 				//TODO: en passant
-				return squares;
-			}else{
-				return squares;
 			}
 		}
+		return squares;
 	}
 }
