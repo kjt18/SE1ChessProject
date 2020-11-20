@@ -1,6 +1,5 @@
 package Group3.Chess;
 
-import javafx.application.Application;
 import javafx.scene.image.Image;
 import java.util.ArrayList;
 import java.util.List;
