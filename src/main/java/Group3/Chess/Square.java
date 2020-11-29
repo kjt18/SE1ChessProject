@@ -64,20 +64,21 @@ public class Square extends Label {
 		return y;
 	}
 	//handles the movement of pieces
-	private void onMouseClicked() {	
+	private void onMouseClicked() {
 		Piece previousPiece = board.getSelectedPiece();		
 		if (previousPiece != null) {
 			previousPiece.getMoves().forEach(Square::setDefaultColor);	
-			if (previousPiece.canMoveTo(this)) {
+			if (previousPiece.canMoveTo(this) && board.doesMovingPieceReturnCheck(previousPiece, this) == false) {
 				previousPiece.moveTo(this);
 				board.setSelectedPiece(null);
-        board.setTurnColor(board.getTurnColor().equals("white") ? "black" : "white");
 				if (previousPiece instanceof Pawn){
 					if (previousPiece.getSquare().getY() == 0 || previousPiece.getSquare().getY() == 7) {
 						PawnPromotion promotor = new PawnPromotion((Pawn)previousPiece);
 						promotor.displayPromotionPopup();
 					}
 				}
+				board.setTurnColor(board.getTurnColor().equals("white") ? "black" : "white");
+				board.getBoardStatus();
 				return;
 			}
 		}
