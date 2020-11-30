@@ -64,6 +64,6 @@ public class PawnPromotion {
 		Scene scene = new Scene(vbox);
 		
 		pawnPromotionWindow.setScene(scene);
-		pawnPromotionWindow.show();
+		pawnPromotionWindow.showAndWait();
 	}
 }
