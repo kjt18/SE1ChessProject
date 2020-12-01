@@ -2,6 +2,8 @@ package Group3.Chess;
 
 import java.util.List;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
 
 public class Board extends GridPane {
@@ -120,14 +122,30 @@ public class Board extends GridPane {
 	//prints if any game elements occurred
 	public void getBoardStatus() {
 		updateKingInCheck();
+		Alert alert = new Alert(AlertType.INFORMATION);
 		if (getInCheck() == true) {
 			if (isCheckmate() == true) {
 				System.out.println("checkmate");
+				alert.setTitle("Game Over");
+				alert.setHeaderText("Checkmate!");
+				alert.setContentText(turnColor.contentEquals("white") ? "Black wins!" : "White wins!");
+				alert.showAndWait();
+				resetGame();
+				
 			} else {
 				System.out.println(getTurnColor() + " is in check");
+				alert.setTitle("Check");
+				alert.setHeaderText(getTurnColor() + " is in check");
+				alert.showAndWait();
 			}
 		} else if (isStalemate() == true) {
 			System.out.println("stalemate");
+			alert.setTitle("Game Over");
+			alert.setHeaderText("Stalemate!");
+			alert.setContentText("It's a draw!");
+			alert.showAndWait();
+			resetGame();
+			
 		}
 	}
 	public Square getSquare(int x, int y) {
@@ -161,5 +179,12 @@ public class Board extends GridPane {
 		for (int i = 0; i < 8; i++) {
 			new Pawn(this, getSquare(i, 1), "black");
 		}
+	}
+	public void resetGame() {
+		for(int i = 0; i < 64; i++) {
+			squares[i].setPiece(null);
+		}
+		placePieces();
+		setTurnColor("white");
 	}
 }
