@@ -125,7 +125,6 @@ public class Board extends GridPane {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		if (getInCheck() == true) {
 			if (isCheckmate() == true) {
-				System.out.println("checkmate");
 				alert.setTitle("Game Over");
 				alert.setHeaderText("Checkmate!");
 				alert.setContentText(turnColor.contentEquals("white") ? "Black wins!" : "White wins!");
@@ -133,18 +132,15 @@ public class Board extends GridPane {
 				resetGame();
 				
 			} else {
-				System.out.println(getTurnColor() + " is in check");
 				alert.setTitle("Check");
 				alert.setHeaderText(getTurnColor() + " is in check");
 				alert.showAndWait();
 			}
 		} else if (isStalemate() == true) {
-			System.out.println("stalemate");
 			alert.setTitle("Game Over");
 			alert.setHeaderText("Stalemate!");
 			alert.setContentText("It's a draw!");
 			alert.showAndWait();
-			resetGame();
 			
 		}
 	}
