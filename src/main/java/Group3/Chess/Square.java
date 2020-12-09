@@ -81,6 +81,7 @@ public class Square extends Label {
 			if (previousPiece.canMoveTo(this) && board.doesMovingPieceReturnCheck(previousPiece, this) == false) {
 				previousPiece.moveTo(this);
 				//TODO: set all enemy pawn's isEnpassantable to false
+				
 				board.setSelectedPiece(null);
 				if (previousPiece instanceof Pawn){
 					if (previousPiece.getSquare().getY() == 0 || previousPiece.getSquare().getY() == 7) {
