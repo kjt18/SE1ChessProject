@@ -108,32 +108,32 @@ public class King extends Piece {
 		//finds castling possibilities-white right side of king
 		if (getSquare().getX() == 4 && getSquare().getY() == 7 && getColor() == "white" && getSquare().getPiece().getName().compareTo("King")==0) {
 		Square rookTestSquare = getBoard().getSquare(7, 7);
-			if (rookTestSquare.getPiece().isRook(getColor(), 7, 7) && checkSquare(5,7) && checkSquare(6,7)) { 
-				if (!getBoard().getSquare(4, 7).getPiece().hasKingCastled())
-				squares.add(getBoard().getSquare(6, 7));
+			if (!(getBoard().getSquare(4, 7).getPiece().hasKingCastled())) {	
+				if (rookTestSquare.getPiece().isRook(getColor(), 7, 7) && checkSquare(5,7) && checkSquare(6,7))  
+					squares.add(getBoard().getSquare(6, 7));
 			}
 		}
 		//finds castling possibilities-white left side of king
 		if (getSquare().getX() == 4 && getSquare().getY() == 7 && getColor() == "white"  && getSquare().getPiece().getName().compareTo("King")==0) {
 		Square rookTestSquare = getBoard().getSquare(0, 7);
-			if (rookTestSquare.getPiece().isRook(getColor(), 0, 7) && checkSquare(1,7) && checkSquare(2,7) && checkSquare(3,7)) { 
-				if (!getBoard().getSquare(4, 7).getPiece().hasKingCastled())
+			if (!(getBoard().getSquare(4, 7).getPiece().hasKingCastled())) {	
+				if (rookTestSquare.getPiece().isRook(getColor(), 0, 7) && checkSquare(1,7) && checkSquare(2,7) && checkSquare(3,7)) 
 					squares.add(getBoard().getSquare(2, 7));
 			}
 		}
 		//finds castling possibilities-black right side of king
 		if (getSquare().getX() == 4 && getSquare().getY() == 0 && getColor().compareTo("black")==0 && getSquare().getPiece().getName().compareTo("King")==0) {
 		Square rookTestSquare = getBoard().getSquare(7, 0);
-			if (rookTestSquare.getPiece().isRook(getColor(), 7, 0) && checkSquare(5,0) && checkSquare(6,0)) { 
-				if (!getBoard().getSquare(4, 0).getPiece().hasKingCastled())	
+			if (!(getBoard().getSquare(4, 0).getPiece().hasKingCastled())) {	
+				if (rookTestSquare.getPiece().isRook(getColor(), 7, 0) && checkSquare(5,0) && checkSquare(6,0))  
 					squares.add(getBoard().getSquare(6, 0));
 			}
 		}
 		//finds castling possibilities-black left side of king
 		if (getSquare().getX() == 4 && getSquare().getY() == 0 && getColor() == "black"  && getSquare().getPiece().getName().compareTo("King")==0) {
 		Square rookTestSquare = getBoard().getSquare(0, 0);
-			if (rookTestSquare.getPiece().isRook(getColor(), 0, 0) && checkSquare(1,0) && checkSquare(2,0) && checkSquare(3,0)) { 
-				if (!getBoard().getSquare(4, 0).getPiece().hasKingCastled())
+			if (!(getBoard().getSquare(4, 0).getPiece().hasKingCastled())){	
+				if (rookTestSquare.getPiece().isRook(getColor(), 0, 0) && checkSquare(1,0) && checkSquare(2,0) && checkSquare(3,0))  
 					squares.add(getBoard().getSquare(2, 0));
 			}
 		}
