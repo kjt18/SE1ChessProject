@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pawn extends Piece {
+	boolean isEnpassantable = false;
 	public Pawn(Board board, Square square, String color) {
 		super(board, square, color);
 	}
@@ -46,7 +47,7 @@ public class Pawn extends Piece {
 					}
 				}
 				////////////////////////////////////////////////////////////////////
-				Piece currentPiece = getSquare().getPiece();
+				Piece currentPiece = this;
 				Piece target = null;
 				if(currentPiece instanceof Pawn) {
 					if((getSquare().getLastPieceMoved() instanceof Pawn) && (getSquare().getLastPieceMoved().getColor() != (currentPiece.getColor())))
@@ -105,4 +106,19 @@ public class Pawn extends Piece {
 		}
 		return squares;
 	}
+	@Override
+	public void moveTo(Square square) {
+		/*TODO: Set IsEnpassantable
+		 * if(square is 2 ahead) {
+			setIsEnpassantable(true)
+		}*/
+		super.moveTo(square);
+	}
+	public boolean isEnpassantable() {
+		return isEnpassantable;
+	}
+	public void setEnpassantable(boolean isEnpassantable) {
+		this.isEnpassantable = isEnpassantable;
+	}
+	
 }
