@@ -7,10 +7,13 @@ import java.util.List;
 public class Rook extends Piece {
 	public Rook(Board board, Square square, String color) {
 		super(board, square, color);
+		setName("Rook");
 	}
+	public Rook() {setName("Rook");};
 	public Image getImage() {
 		return new Image(getColor() == "white" ? "rook_white.png" : "rook_black.png");
 	}
+
 	public List<Square> getMoves() {
 		List<Square> squares = new ArrayList<Square>();
 		//finds the possible squares to the right
@@ -60,7 +63,7 @@ public class Rook extends Piece {
 			} else {
 				break;
 			}
-		}	
-		return squares;
+		}
+	return squares;
 	}
 }

@@ -11,6 +11,22 @@ class RookTest {
 		new AppLauncher().start();
 	}
 	@Test
+	void nameCheck() {
+		Board testBoard = new Board();
+		testBoard.placePieces();		
+		Square testSquare = testBoard.getSquare(0, 0);
+		Piece testPiece = testSquare.getPiece();
+		assertEquals("Rook", testPiece.getName());
+	}
+	@Test
+	void pieceCheckCheck() {
+		Board testBoard = new Board();
+		testBoard.placePieces();		
+		Square testSquare = testBoard.getSquare(0, 0);
+		Piece testPiece = testSquare.getPiece();
+		assertEquals(true, testPiece.isRook("white", 7, 7));
+	}
+	@Test
 	void TopLeftCornerShouldHaveARookOnBoard() {
 		Board testBoard = new Board();
 		testBoard.placePieces();		
