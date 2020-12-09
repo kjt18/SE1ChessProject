@@ -102,16 +102,16 @@ public class Pawn extends Piece {
 	@Override
 	public void moveTo(Square square) {////////////////////////////////////////////////
 		//TODO: Set IsEnpassantable
-		  if(this.getSquare().getY() == 4 && this.getColor() == "white") {
+		  if(this.getSquare().getY() == 5 && this.getColor() == "white") {
 			setEnpassantable(true);
 		  }
-		  else if(this.getSquare().getY() == 3 && this.getColor() == "black") {
+		  else if(this.getSquare().getY() == 2 && this.getColor() == "black") {
 			  setEnpassantable(true);
 		  }
-		  if(this.getSquare().getY() != 4 && this.getColor() == "white") {
+		  if(this.getSquare().getY() != 5 && this.getColor() == "white") {
 			  setEnpassantable(false);
 		  }
-		  else if(this.getSquare().getY() != 3 && this.getColor() == "black") {
+		  else if(this.getSquare().getY() != 2 && this.getColor() == "black") {
 			  setEnpassantable(false);
 		  }
 		super.moveTo(square);

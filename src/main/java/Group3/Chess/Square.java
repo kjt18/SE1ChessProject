@@ -9,8 +9,6 @@ public class Square extends Label {
 	private Piece piece;
 	private int x;
 	private int y;
-	private Piece lastPiece = null;/////////////////
-	private Square lastSquare = null;/////////////
 	//finds the color of the square based on its x,y position
 	private String getPositionColor() {
 		return x % 2 == 1 && y % 2 == 1 || x % 2 == 0 && y % 2 == 0 ? "white" : "black";
@@ -56,16 +54,8 @@ public class Square extends Label {
 	public Board getBoard() {
 		return board;
 	}
-	public Piece getPiece() {////////////
-		lastPiece = piece;
-		//lastSquare = piece.getSquare();
+	public Piece getPiece() {
 		return piece;
-	}
-	public Piece getLastPieceMoved(){///////////////////
-		return lastPiece;
-	}
-	public Square getLastSquare() {////////////////////////
-		return getLastPieceMoved().getSquare();
 	}
 	public int getX() {
 		return x;
@@ -81,7 +71,21 @@ public class Square extends Label {
 			if (previousPiece.canMoveTo(this) && board.doesMovingPieceReturnCheck(previousPiece, this) == false) {
 				previousPiece.moveTo(this);
 				//TODO: set all enemy pawn's isEnpassantable to false
-				
+				if(previousPiece instanceof Pawn) {
+					//look over all the squares of the board
+					//if the square holds another pawn not of the same color
+					//that pawn's isEnpassantable becomes false
+					for(int i =0; i < board.getRowCount(); i++) {
+						for(int j=0; j < board.getColumnCount(); j++) {
+							if((board.getSquare(i, j).getPiece() instanceof Pawn) && (board.getSquare(i, j).getPiece().getColor() != previousPiece.getColor())) {
+								//setEnpassantable to false for that square's piece that is a pawn of opposite color
+								
+							}
+						}
+						
+					}
+					
+				}
 				board.setSelectedPiece(null);
 				if (previousPiece instanceof Pawn){
 					if (previousPiece.getSquare().getY() == 0 || previousPiece.getSquare().getY() == 7) {
