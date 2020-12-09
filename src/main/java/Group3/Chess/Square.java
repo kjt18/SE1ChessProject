@@ -9,6 +9,8 @@ public class Square extends Label {
 	private Piece piece;
 	private int x;
 	private int y;
+	private Piece lastPiece = null;/////////////////
+	private Square lastSquare = null;/////////////
 	//finds the color of the square based on its x,y position
 	private String getPositionColor() {
 		return x % 2 == 1 && y % 2 == 1 || x % 2 == 0 && y % 2 == 0 ? "white" : "black";
@@ -54,8 +56,16 @@ public class Square extends Label {
 	public Board getBoard() {
 		return board;
 	}
-	public Piece getPiece() {
+	public Piece getPiece() {////////////
+		lastPiece = piece;
+		//lastSquare = piece.getSquare();
 		return piece;
+	}
+	public Piece getLastPieceMoved(){///////////////////
+		return lastPiece;
+	}
+	public Square getLastSquare() {////////////////////////
+		return getLastPieceMoved().getSquare();
 	}
 	public int getX() {
 		return x;

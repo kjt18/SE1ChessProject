@@ -7,6 +7,8 @@ public abstract class Piece {
 	private Board board;
 	private Square square;
 	private String color;
+
+	
 	public Piece(Board board, Square square, String color) {
 		this.board = board;
 		this.square = square;
@@ -39,6 +41,7 @@ public abstract class Piece {
 	public String getColor() {
 		return color;
 	}
+
 	//returns the image of the piece
 	public abstract Image getImage();
 	//return a list of squares that the piece can move to

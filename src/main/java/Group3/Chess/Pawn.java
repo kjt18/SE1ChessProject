@@ -45,7 +45,29 @@ public class Pawn extends Piece {
 						}
 					}
 				}
+				////////////////////////////////////////////////////////////////////
+				Piece currentPiece = getSquare().getPiece();
+				Piece target = null;
+				if(currentPiece instanceof Pawn) {
+					if((getSquare().getLastPieceMoved() instanceof Pawn) && (getSquare().getLastPieceMoved().getColor() != (currentPiece.getColor())))
+					{
+						target = getSquare().getLastPieceMoved();
+						if((getSquare().getLastSquare().getY() - target.getSquare().getY()) == 2)//might be subtracting same number here
+							{
+							if((target.getSquare().getX() - currentPiece.getSquare().getX()) == 1)
+							{
+								square = getBoard().getSquare(target.getSquare().getX(), target.getSquare().getY() + 1);
+								squares.add(square);
+							}
+							if((target.getSquare().getX() - currentPiece.getSquare().getX()) == -1 ){
+								square = getBoard().getSquare(target.getSquare().getX(), target.getSquare().getY() + 1);
+								squares.add(square);
+							}
+						}
+					}
+				}
 				//TODO: en passant
+				////////////////////////////////////////////////////////////////////
 			}
 		} else { //if piece is black
 			if(getSquare().getY() < 7){
