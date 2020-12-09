@@ -49,12 +49,6 @@ public abstract class Piece {
 	public void setEnpassantable(boolean isEnpassantable) {
 		this.isEnpassantable = isEnpassantable;
 	}
-	public void setPreviousPieceLastSquare() {
-		previousPieceLastSquare = this.getSquare();
-	}
-	public Square getPreviousPieceLastSquare() {
-		return previousPieceLastSquare;
-	}
 
 	//returns the image of the piece
 	public abstract Image getImage();

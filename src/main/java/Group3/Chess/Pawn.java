@@ -53,10 +53,18 @@ public class Pawn extends Piece {
 						square = getBoard().getSquare(enPassantVictim.getSquare().getX(), enPassantVictim.getSquare().getY()-1);
 						if(square.getPiece() == null) {
 								squares.add(square);
-						}//seems to be adding move to the same piece instead
+						}
 					}
-					///////////
 					}
+				else if(getBoard().getSquare(this.getSquare().getX()-1, this.getSquare().getY()).getPiece() instanceof Pawn) {
+				Piece enPassantVictim = getBoard().getSquare(this.getSquare().getX()-1, this.getSquare().getY()).getPiece();
+					if(enPassantVictim.isEnpassantable() == true) {
+					square = getBoard().getSquare(enPassantVictim.getSquare().getX(), enPassantVictim.getSquare().getY()-1);
+					if(square.getPiece() == null) {
+							squares.add(square);
+					}
+				}
+				}
 				//TODO: en passant
 				////////////////////////////////////////////////////////////////////
 			}
@@ -91,16 +99,24 @@ public class Pawn extends Piece {
 						}
 					}
 				}	
-				//TODO: en passant////////
+				//TODO: en passant//////// does not check to see if victim is of same or different color
 				if(getBoard().getSquare(this.getSquare().getX()+1, this.getSquare().getY()).getPiece() instanceof Pawn) {
 				Piece enPassantVictim = getBoard().getSquare(this.getSquare().getX()+1, this.getSquare().getY()).getPiece();
 					if(enPassantVictim.isEnpassantable() == true) {
-					square = getBoard().getSquare(enPassantVictim.getSquare().getX(), enPassantVictim.getSquare().getY()-1);
+					square = getBoard().getSquare(enPassantVictim.getSquare().getX(), enPassantVictim.getSquare().getY()+1);
 					if(square.getPiece() == null) {
 							squares.add(square);
-					}//seems to be adding move to the same piece instead
+					}
 				}
-				///////////
+				}
+				else if(getBoard().getSquare(this.getSquare().getX()-1, this.getSquare().getY()).getPiece() instanceof Pawn) {
+				Piece enPassantVictim = getBoard().getSquare(this.getSquare().getX()-1, this.getSquare().getY()).getPiece();
+					if(enPassantVictim.isEnpassantable() == true) {
+					square = getBoard().getSquare(enPassantVictim.getSquare().getX(), enPassantVictim.getSquare().getY()+1);
+					if(square.getPiece() == null) {
+							squares.add(square);
+					}
+				}
 				}
 			}
 		}

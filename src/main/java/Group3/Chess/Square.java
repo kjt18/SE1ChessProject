@@ -66,15 +66,14 @@ public class Square extends Label {
 	//handles the movement of pieces
 	private void onMouseClicked() {
 		Piece previousPiece = board.getSelectedPiece();
-		previousPiece.setPreviousPieceLastSquare();
-		
 		if (previousPiece != null) {
+			int previousPieceY = previousPiece.getSquare().getY();
 			previousPiece.getMoves().forEach(Square::setDefaultColor);	
 			if (previousPiece.canMoveTo(this) && board.doesMovingPieceReturnCheck(previousPiece, this) == false) {
 				previousPiece.moveTo(this);
 				//TODO: set all enemy pawn's isEnpassantable to false
 				if(previousPiece instanceof Pawn) {
-					if(previousPiece.getSquare().getY() - previousPiece.getPreviousPieceLastSquare().getY() == 2)// here should be also -2 to account for if white pawn moves up 2 which results in (row4-row6) 
+					if((previousPiece.getSquare().getY() - previousPieceY == 2)||(previousPiece.getSquare().getY() - previousPieceY == -2))// here should be also -2 to account for if white pawn moves up 2 which results in (row4-row6) 
 					{
 						previousPiece.setEnpassantable(true);
 					}
