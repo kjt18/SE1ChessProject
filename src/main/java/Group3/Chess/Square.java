@@ -65,25 +65,34 @@ public class Square extends Label {
 	}
 	//handles the movement of pieces
 	private void onMouseClicked() {
-		Piece previousPiece = board.getSelectedPiece();		
+		Piece previousPiece = board.getSelectedPiece();
+		previousPiece.setPreviousPieceLastSquare();
+		
 		if (previousPiece != null) {
 			previousPiece.getMoves().forEach(Square::setDefaultColor);	
 			if (previousPiece.canMoveTo(this) && board.doesMovingPieceReturnCheck(previousPiece, this) == false) {
 				previousPiece.moveTo(this);
 				//TODO: set all enemy pawn's isEnpassantable to false
 				if(previousPiece instanceof Pawn) {
+					if(previousPiece.getSquare().getY() - previousPiece.getPreviousPieceLastSquare().getY() == 2)// here should be also -2 to account for if white pawn moves up 2 which results in (row4-row6) 
+					{
+						previousPiece.setEnpassantable(true);
+					}
+					if(previousPiece.isEnpassantable) {
+						for(int i =0; i < board.getRowCount(); i++) {
+							for(int j=0; j < board.getColumnCount(); j++) {
+								if((board.getSquare(i, j).getPiece() instanceof Pawn) && (board.getSquare(i, j).getPiece().getColor() != previousPiece.getColor())) {
+									//setEnpassantable to false for that square's piece that is a pawn of opposite color
+									board.getSquare(i, j).getPiece().setEnpassantable(false);
+								}
+							}
+							
+						}
+					}
 					//look over all the squares of the board
 					//if the square holds another pawn not of the same color
 					//that pawn's isEnpassantable becomes false
-					for(int i =0; i < board.getRowCount(); i++) {
-						for(int j=0; j < board.getColumnCount(); j++) {
-							if((board.getSquare(i, j).getPiece() instanceof Pawn) && (board.getSquare(i, j).getPiece().getColor() != previousPiece.getColor())) {
-								//setEnpassantable to false for that square's piece that is a pawn of opposite color
-								
-							}
-						}
-						
-					}
+
 					
 				}
 				board.setSelectedPiece(null);

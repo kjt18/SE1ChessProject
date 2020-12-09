@@ -7,6 +7,8 @@ public abstract class Piece {
 	private Board board;
 	private Square square;
 	private String color;
+	boolean isEnpassantable = false;
+	private Square previousPieceLastSquare;
 
 	
 	public Piece(Board board, Square square, String color) {
@@ -40,6 +42,18 @@ public abstract class Piece {
 	}
 	public String getColor() {
 		return color;
+	}
+	public boolean isEnpassantable() {
+		return isEnpassantable;
+	}
+	public void setEnpassantable(boolean isEnpassantable) {
+		this.isEnpassantable = isEnpassantable;
+	}
+	public void setPreviousPieceLastSquare() {
+		previousPieceLastSquare = this.getSquare();
+	}
+	public Square getPreviousPieceLastSquare() {
+		return previousPieceLastSquare;
 	}
 
 	//returns the image of the piece

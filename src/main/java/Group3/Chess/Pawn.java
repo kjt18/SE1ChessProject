@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pawn extends Piece {
-	boolean isEnpassantable = false;
+
 	public Pawn(Board board, Square square, String color) {
 		super(board, square, color);
 	}
@@ -47,12 +47,16 @@ public class Pawn extends Piece {
 					}
 				}
 				////////////////////////////////////////////////////////////////////
-				if(this.isEnpassantable() == true) {
-					square = getBoard().getSquare(this.getSquare().getX(), this.getSquare().getY()+1);
-					if(square.getPiece() == null) {
-							squares.add(square);
+				if(getBoard().getSquare(this.getSquare().getX()+1, this.getSquare().getY()).getPiece() instanceof Pawn) {
+					Piece enPassantVictim = getBoard().getSquare(this.getSquare().getX()+1, this.getSquare().getY()).getPiece();
+						if(enPassantVictim.isEnpassantable() == true) {
+						square = getBoard().getSquare(enPassantVictim.getSquare().getX(), enPassantVictim.getSquare().getY()-1);
+						if(square.getPiece() == null) {
+								squares.add(square);
+						}//seems to be adding move to the same piece instead
 					}
-				}
+					///////////
+					}
 				//TODO: en passant
 				////////////////////////////////////////////////////////////////////
 			}
@@ -88,13 +92,16 @@ public class Pawn extends Piece {
 					}
 				}	
 				//TODO: en passant////////
-				if(this.isEnpassantable() == true) {
-					square = getBoard().getSquare(this.getSquare().getX(), this.getSquare().getY()-1);
+				if(getBoard().getSquare(this.getSquare().getX()+1, this.getSquare().getY()).getPiece() instanceof Pawn) {
+				Piece enPassantVictim = getBoard().getSquare(this.getSquare().getX()+1, this.getSquare().getY()).getPiece();
+					if(enPassantVictim.isEnpassantable() == true) {
+					square = getBoard().getSquare(enPassantVictim.getSquare().getX(), enPassantVictim.getSquare().getY()-1);
 					if(square.getPiece() == null) {
 							squares.add(square);
 					}//seems to be adding move to the same piece instead
 				}
 				///////////
+				}
 			}
 		}
 		return squares;
@@ -102,7 +109,7 @@ public class Pawn extends Piece {
 	@Override
 	public void moveTo(Square square) {////////////////////////////////////////////////
 		//TODO: Set IsEnpassantable
-		  if(this.getSquare().getY() == 5 && this.getColor() == "white") {
+		 /* if((this.getSquare().getY() - getBoard().getSquare(2, 6).getY() == -2) && this.getColor() == "white") {
 			setEnpassantable(true);
 		  }
 		  else if(this.getSquare().getY() == 2 && this.getColor() == "black") {
@@ -113,14 +120,9 @@ public class Pawn extends Piece {
 		  }
 		  else if(this.getSquare().getY() != 2 && this.getColor() == "black") {
 			  setEnpassantable(false);
-		  }
+		  }*/
 		super.moveTo(square);
 	}
-	public boolean isEnpassantable() {
-		return isEnpassantable;
-	}
-	public void setEnpassantable(boolean isEnpassantable) {
-		this.isEnpassantable = isEnpassantable;
-	}
+
 	
 }
