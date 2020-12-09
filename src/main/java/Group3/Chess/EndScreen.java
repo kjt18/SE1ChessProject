@@ -11,26 +11,27 @@ import javafx.stage.Stage;
 import javafx.stage.Modality;
 
 public class EndScreen {
-	public boolean displayEndScreenPopup(){
-		boolean selectedYes = false;
+	public void displayEndScreenPopup(){
 		Stage endScreenWindow = new Stage();
 		endScreenWindow.initModality(Modality.APPLICATION_MODAL);
 	
 		//creates the window
-		endScreenWindow.setTitle("Would you like to play again?");
+		endScreenWindow.setTitle("End Screen");
 		endScreenWindow.setResizable(false);
 		
 		//Promotion Scene setting title
-		Label title = new Label("Make your choice and click 'OK'");
+		Label title = new Label("Would you like to play again?\nMake your choice and click 'OK'");
 		title.setStyle("-fx-font-family: verdana; -fx-font-size: 20pt; -fx-font-weight: bold; -fx-text-fill: black; -fx-background-color: white");
 		
 		//button to select piece you have chosen from list
 		Button select = new Button("OK");
 		select.setOnAction(e -> {
 			switch(EndScreenMenu.getChoice()) {
-			case "yes":
+			case "Yes":
+				Board board = new Board();
+				board.resetGame();
 				break;
-			case "no":
+			case "No":
 				System.exit(1);
 				break;
 			default:
@@ -55,7 +56,5 @@ public class EndScreen {
 		
 		endScreenWindow.setScene(scene);
 		endScreenWindow.showAndWait();
-		
-		return selectedYes;
 	}
 }

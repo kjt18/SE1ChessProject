@@ -7,7 +7,7 @@ public class EndScreenMenu extends MenuButton{
 
 	private static String choice;
 	public EndScreenMenu() {
-		super("Would you like to play again?\nMake your choice and press 'OK'.");
+		super("Play Again?");
 		MenuItem yes = new MenuItem("Yes");
 		yes.setOnAction(e -> {
 		choice = "Yes";

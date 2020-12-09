@@ -129,6 +129,8 @@ public class Board extends GridPane {
 				alert.setHeaderText("Checkmate!");
 				alert.setContentText(turnColor.contentEquals("white") ? "Black wins!" : "White wins!");
 				alert.showAndWait();
+				EndScreen end = new EndScreen();
+				end.displayEndScreenPopup();
 				resetGame();
 				
 			} else {
@@ -141,8 +143,10 @@ public class Board extends GridPane {
 			alert.setHeaderText("Stalemate!");
 			alert.setContentText("It's a draw!");
 			alert.showAndWait();
-			
+			EndScreen end = new EndScreen();
+			end.displayEndScreenPopup();
 		}
+		
 	}
 	public Square getSquare(int x, int y) {
 		return squares[y * 8 + x];
