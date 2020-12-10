@@ -97,6 +97,41 @@ public class Square extends Label {
 						promotor.displayPromotionPopup();
 					}
 				}
+				//white Castle from the right Rook 
+				if (previousPiece instanceof King) {
+					if ((previousPiece.getLastSquare().getX() == 4) && (previousPiece.getLastSquare().getY() == 7)) {
+						if (previousPiece.getSquare().getX() == 6) {
+							getBoard().getSquare(7, 7).setPiece(null);
+							new Rook(getBoard(), getBoard().getSquare(5, 7) , previousPiece.getColor());
+							previousPiece.setCastle(true);
+							}
+						}
+					//white castle from the left
+					if ((previousPiece.getLastSquare().getX() == 4) && (previousPiece.getLastSquare().getY() == 7)) {
+						if (previousPiece.getSquare().getX() == 2) {
+							getBoard().getSquare(0, 7).setPiece(null);
+							new Rook(getBoard(), getBoard().getSquare(3, 7) , previousPiece.getColor());
+							previousPiece.setCastle(true);
+							}
+						}
+					//black castle from the right
+					if ((previousPiece.getLastSquare().getX() == 4) && (previousPiece.getLastSquare().getY() == 0)) {
+						if (previousPiece.getSquare().getX() == 6) {
+							getBoard().getSquare(7, 0).setPiece(null);
+							new Rook(getBoard(), getBoard().getSquare(5, 0) , previousPiece.getColor());
+							previousPiece.setCastle(true);
+							}
+						}
+					//black castle from the left
+					if ((previousPiece.getLastSquare().getX() == 4) && (previousPiece.getLastSquare().getY() == 0)) {
+						if (previousPiece.getSquare().getX() == 2) {
+							getBoard().getSquare(0, 0).setPiece(null);
+							new Rook(getBoard(), getBoard().getSquare(3, 0) , previousPiece.getColor());
+							previousPiece.setCastle(true);
+							}
+						}
+				}
+				
 				board.setTurnColor(board.getTurnColor().equals("white") ? "black" : "white");
 				board.getBoardStatus();
 				return;

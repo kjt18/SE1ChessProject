@@ -53,6 +53,12 @@ public class Board extends GridPane {
 	public boolean getInCheck() {
 		return inCheck;
 	}
+/*	public void enactCastleMove() {
+		Square originalSquare;
+		if (getSelectedPiece().isKing("white", 4, 7))
+			originalSquare = getSelectedPiece().getSquare();
+		if (originalSquare.getX()==4 && )
+	}*/
 	//if the current turns king is in any one of the opposing pieces move lists, it sets inCheck to true
 	public void updateKingInCheck() {
 		King king = turnColor.equals("white") ? whiteKing : blackKing;
@@ -125,28 +131,28 @@ public class Board extends GridPane {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		if (getInCheck() == true) {
 			if (isCheckmate() == true) {
-				System.out.println("checkmate");
 				alert.setTitle("Game Over");
 				alert.setHeaderText("Checkmate!");
 				alert.setContentText(turnColor.contentEquals("white") ? "Black wins!" : "White wins!");
 				alert.showAndWait();
+				EndScreen end = new EndScreen();
+				end.displayEndScreenPopup();
 				resetGame();
 				
 			} else {
-				System.out.println(getTurnColor() + " is in check");
 				alert.setTitle("Check");
 				alert.setHeaderText(getTurnColor() + " is in check");
 				alert.showAndWait();
 			}
 		} else if (isStalemate() == true) {
-			System.out.println("stalemate");
 			alert.setTitle("Game Over");
 			alert.setHeaderText("Stalemate!");
 			alert.setContentText("It's a draw!");
 			alert.showAndWait();
-			resetGame();
-			
+			EndScreen end = new EndScreen();
+			end.displayEndScreenPopup();
 		}
+		
 	}
 	public Square getSquare(int x, int y) {
 		return squares[y * 8 + x];
@@ -154,6 +160,7 @@ public class Board extends GridPane {
 	public Square[] getSquares() {
 		return squares;
 	}
+	public boolean isInCheck() {return inCheck;}
 	public void placePieces() {
 		new Rook(this, getSquare(0, 7), "white");
 		new Rook(this, getSquare(7, 7), "white");
