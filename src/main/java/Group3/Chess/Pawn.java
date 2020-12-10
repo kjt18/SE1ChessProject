@@ -47,9 +47,10 @@ public class Pawn extends Piece {
 					}
 				}
 				////////////////////////////////////////////////////////////////////
+				Piece enPassantVictim = null;
 				if(getBoard().getSquare(this.getSquare().getX()+1, this.getSquare().getY()).getPiece() instanceof Pawn) {
-					Piece enPassantVictim = getBoard().getSquare(this.getSquare().getX()+1, this.getSquare().getY()).getPiece();
-						if(enPassantVictim.isEnpassantable() == true) {
+					enPassantVictim = getBoard().getSquare(this.getSquare().getX()+1, this.getSquare().getY()).getPiece();
+						if(enPassantVictim.isEnpassantable() == true && enPassantVictim.getColor() != this.getColor()) {
 						square = getBoard().getSquare(enPassantVictim.getSquare().getX(), enPassantVictim.getSquare().getY()-1);
 						if(square.getPiece() == null) {
 								squares.add(square);
@@ -57,14 +58,19 @@ public class Pawn extends Piece {
 					}
 					}
 				else if(getBoard().getSquare(this.getSquare().getX()-1, this.getSquare().getY()).getPiece() instanceof Pawn) {
-				Piece enPassantVictim = getBoard().getSquare(this.getSquare().getX()-1, this.getSquare().getY()).getPiece();
-					if(enPassantVictim.isEnpassantable() == true) {
+				enPassantVictim = getBoard().getSquare(this.getSquare().getX()-1, this.getSquare().getY()).getPiece();
+					if(enPassantVictim.isEnpassantable() == true && enPassantVictim.getColor() != this.getColor()) {
 					square = getBoard().getSquare(enPassantVictim.getSquare().getX(), enPassantVictim.getSquare().getY()-1);
 					if(square.getPiece() == null) {
 							squares.add(square);
 					}
 				}
 				}
+				if(getBoard().getSquare(this.getSquare().getX(), this.getSquare().getY()+1).getPiece() instanceof Pawn){
+				 if(getBoard().getSquare(this.getSquare().getX(), this.getSquare().getY()+1).getPiece().isEnpassantable){
+					getBoard().getSquare(this.getSquare().getX(), this.getSquare().getY()+1).setPiece(null);
+				}
+				}	
 				//TODO: en passant
 				////////////////////////////////////////////////////////////////////
 			}
@@ -99,10 +105,11 @@ public class Pawn extends Piece {
 						}
 					}
 				}	
-				//TODO: en passant//////// does not check to see if victim is of same or different color
+				//TODO: en passant////////
+				Piece enPassantVictim = null;
 				if(getBoard().getSquare(this.getSquare().getX()+1, this.getSquare().getY()).getPiece() instanceof Pawn) {
-				Piece enPassantVictim = getBoard().getSquare(this.getSquare().getX()+1, this.getSquare().getY()).getPiece();
-					if(enPassantVictim.isEnpassantable() == true) {
+				enPassantVictim = getBoard().getSquare(this.getSquare().getX()+1, this.getSquare().getY()).getPiece();
+					if(enPassantVictim.isEnpassantable() == true && enPassantVictim.getColor() != this.getColor()) {
 					square = getBoard().getSquare(enPassantVictim.getSquare().getX(), enPassantVictim.getSquare().getY()+1);
 					if(square.getPiece() == null) {
 							squares.add(square);
@@ -110,15 +117,20 @@ public class Pawn extends Piece {
 				}
 				}
 				else if(getBoard().getSquare(this.getSquare().getX()-1, this.getSquare().getY()).getPiece() instanceof Pawn) {
-				Piece enPassantVictim = getBoard().getSquare(this.getSquare().getX()-1, this.getSquare().getY()).getPiece();
-					if(enPassantVictim.isEnpassantable() == true) {
+				enPassantVictim = getBoard().getSquare(this.getSquare().getX()-1, this.getSquare().getY()).getPiece();
+					if(enPassantVictim.isEnpassantable() == true && enPassantVictim.getColor() != this.getColor()) {
 					square = getBoard().getSquare(enPassantVictim.getSquare().getX(), enPassantVictim.getSquare().getY()+1);
 					if(square.getPiece() == null) {
 							squares.add(square);
 					}
 				}
 				}
+				if(getBoard().getSquare(this.getSquare().getX(), this.getSquare().getY()-1).getPiece() instanceof Pawn){
+					 if(getBoard().getSquare(this.getSquare().getX(), this.getSquare().getY()-1).getPiece().isEnpassantable){
+						getBoard().getSquare(this.getSquare().getX(), this.getSquare().getY()-1).setPiece(null);
+					}
 			}
+		}
 		}
 		return squares;
 	}

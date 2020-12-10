@@ -8,7 +8,6 @@ public abstract class Piece {
 	private Square square;
 	private String color;
 	boolean isEnpassantable = false;
-	private Square previousPieceLastSquare;
 
 	
 	public Piece(Board board, Square square, String color) {

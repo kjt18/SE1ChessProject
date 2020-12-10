@@ -88,12 +88,7 @@ public class Square extends Label {
 							
 						}
 					}
-					//look over all the squares of the board
-					//if the square holds another pawn not of the same color
-					//that pawn's isEnpassantable becomes false
-
-					
-				}
+				}	
 				board.setSelectedPiece(null);
 				if (previousPiece instanceof Pawn){
 					if (previousPiece.getSquare().getY() == 0 || previousPiece.getSquare().getY() == 7) {
