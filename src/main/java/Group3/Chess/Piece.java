@@ -8,9 +8,11 @@ public abstract class Piece {
 	private Square lastSquare;
 	private Square square;
 	private String color;
+	boolean isEnpassantable = false;
 	private boolean hasCastled;
 	private String name = "";
 	public Piece() {};
+
 	public Piece(Board board, Square square, String color) {
 		this.board = board;
 		this.square = square;
@@ -60,6 +62,13 @@ public abstract class Piece {
 	public String getColor() {
 		return color;
 	}
+
+	public boolean isEnpassantable() {
+		return isEnpassantable;
+	}
+	public void setEnpassantable(boolean isEnpassantable) {
+		this.isEnpassantable = isEnpassantable;
+	}
 	public String getName() {
 		return name;
 	}
@@ -70,6 +79,7 @@ public abstract class Piece {
 		this.hasCastled = hasCastled;
 	}
 	public boolean hasKingCastled() {return hasCastled;}
+
 	//returns the image of the piece
 	public abstract Image getImage();
 	//return a list of squares that the piece can move to

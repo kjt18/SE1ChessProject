@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pawn extends Piece {
+
 	public Pawn(Board board, Square square, String color) {
 		super(board, square, color);
 	}
@@ -45,7 +46,34 @@ public class Pawn extends Piece {
 						}
 					}
 				}
-				//TODO: en passant
+				//assigns an enpassant victim based on whether the piece passes qualifications
+				Piece enPassantVictim = null;
+				//checks both sides of this pawn to see if there is a victim of enpassant(meaning it was labeled)
+				if(getBoard().getSquare(this.getSquare().getX()+1, this.getSquare().getY()).getPiece() instanceof Pawn) {
+					enPassantVictim = getBoard().getSquare(this.getSquare().getX()+1, this.getSquare().getY()).getPiece();
+						if(enPassantVictim.isEnpassantable() == true && enPassantVictim.getColor() != this.getColor()) {
+						square = getBoard().getSquare(enPassantVictim.getSquare().getX(), enPassantVictim.getSquare().getY()-1);
+						if(square.getPiece() == null) {
+								squares.add(square);
+						}
+					}
+					}
+				else if(getBoard().getSquare(this.getSquare().getX()-1, this.getSquare().getY()).getPiece() instanceof Pawn) {
+				enPassantVictim = getBoard().getSquare(this.getSquare().getX()-1, this.getSquare().getY()).getPiece();
+					if(enPassantVictim.isEnpassantable() == true && enPassantVictim.getColor() != this.getColor()) {
+					square = getBoard().getSquare(enPassantVictim.getSquare().getX(), enPassantVictim.getSquare().getY()-1);
+					if(square.getPiece() == null) {
+							squares.add(square);
+					}
+				}
+				}
+				//if the move occurs where the piece takes the new available square it captures the enpassant victim
+				if(getBoard().getSquare(this.getSquare().getX(), this.getSquare().getY()+1).getPiece() instanceof Pawn){
+				 if(getBoard().getSquare(this.getSquare().getX(), this.getSquare().getY()+1).getPiece().isEnpassantable){
+					getBoard().getSquare(this.getSquare().getX(), this.getSquare().getY()+1).setPiece(null);
+				}
+				}	
+
 			}
 		} else { //if piece is black
 			if(getSquare().getY() < 7){
@@ -78,9 +106,34 @@ public class Pawn extends Piece {
 						}
 					}
 				}	
-				//TODO: en passant
+				//en passant for black piece
+				Piece enPassantVictim = null;
+				if(getBoard().getSquare(this.getSquare().getX()+1, this.getSquare().getY()).getPiece() instanceof Pawn) {
+				enPassantVictim = getBoard().getSquare(this.getSquare().getX()+1, this.getSquare().getY()).getPiece();
+					if(enPassantVictim.isEnpassantable() == true && enPassantVictim.getColor() != this.getColor()) {
+					square = getBoard().getSquare(enPassantVictim.getSquare().getX(), enPassantVictim.getSquare().getY()+1);
+					if(square.getPiece() == null) {
+							squares.add(square);
+					}
+				}
+				}
+				else if(getBoard().getSquare(this.getSquare().getX()-1, this.getSquare().getY()).getPiece() instanceof Pawn) {
+				enPassantVictim = getBoard().getSquare(this.getSquare().getX()-1, this.getSquare().getY()).getPiece();
+					if(enPassantVictim.isEnpassantable() == true && enPassantVictim.getColor() != this.getColor()) {
+					square = getBoard().getSquare(enPassantVictim.getSquare().getX(), enPassantVictim.getSquare().getY()+1);
+					if(square.getPiece() == null) {
+							squares.add(square);
+					}
+				}
+				}
+				if(getBoard().getSquare(this.getSquare().getX(), this.getSquare().getY()-1).getPiece() instanceof Pawn){
+					 if(getBoard().getSquare(this.getSquare().getX(), this.getSquare().getY()-1).getPiece().isEnpassantable){
+						getBoard().getSquare(this.getSquare().getX(), this.getSquare().getY()-1).setPiece(null);
+					}
 			}
+		}
 		}
 		return squares;
 	}
+
 }
