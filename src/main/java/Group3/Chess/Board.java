@@ -53,6 +53,12 @@ public class Board extends GridPane {
 	public boolean getInCheck() {
 		return inCheck;
 	}
+/*	public void enactCastleMove() {
+		Square originalSquare;
+		if (getSelectedPiece().isKing("white", 4, 7))
+			originalSquare = getSelectedPiece().getSquare();
+		if (originalSquare.getX()==4 && )
+	}*/
 	//if the current turns king is in any one of the opposing pieces move lists, it sets inCheck to true
 	public void updateKingInCheck() {
 		King king = turnColor.equals("white") ? whiteKing : blackKing;
@@ -154,6 +160,7 @@ public class Board extends GridPane {
 	public Square[] getSquares() {
 		return squares;
 	}
+	public boolean isInCheck() {return inCheck;}
 	public void placePieces() {
 		new Rook(this, getSquare(0, 7), "white");
 		new Rook(this, getSquare(7, 7), "white");
