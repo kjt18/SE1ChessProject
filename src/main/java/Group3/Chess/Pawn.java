@@ -46,8 +46,9 @@ public class Pawn extends Piece {
 						}
 					}
 				}
-				////////////////////////////////////////////////////////////////////
+				//assigns an enpassant victim based on whether the piece passes qualifications
 				Piece enPassantVictim = null;
+				//checks both sides of this pawn to see if there is a victim of enpassant(meaning it was labeled)
 				if(getBoard().getSquare(this.getSquare().getX()+1, this.getSquare().getY()).getPiece() instanceof Pawn) {
 					enPassantVictim = getBoard().getSquare(this.getSquare().getX()+1, this.getSquare().getY()).getPiece();
 						if(enPassantVictim.isEnpassantable() == true && enPassantVictim.getColor() != this.getColor()) {
@@ -66,13 +67,13 @@ public class Pawn extends Piece {
 					}
 				}
 				}
+				//if the move occurs where the piece takes the new available square it captures the enpassant victim
 				if(getBoard().getSquare(this.getSquare().getX(), this.getSquare().getY()+1).getPiece() instanceof Pawn){
 				 if(getBoard().getSquare(this.getSquare().getX(), this.getSquare().getY()+1).getPiece().isEnpassantable){
 					getBoard().getSquare(this.getSquare().getX(), this.getSquare().getY()+1).setPiece(null);
 				}
 				}	
-				//TODO: en passant
-				////////////////////////////////////////////////////////////////////
+
 			}
 		} else { //if piece is black
 			if(getSquare().getY() < 7){
@@ -105,7 +106,7 @@ public class Pawn extends Piece {
 						}
 					}
 				}	
-				//TODO: en passant////////
+				//en passant for black piece
 				Piece enPassantVictim = null;
 				if(getBoard().getSquare(this.getSquare().getX()+1, this.getSquare().getY()).getPiece() instanceof Pawn) {
 				enPassantVictim = getBoard().getSquare(this.getSquare().getX()+1, this.getSquare().getY()).getPiece();
@@ -134,23 +135,5 @@ public class Pawn extends Piece {
 		}
 		return squares;
 	}
-	@Override
-	public void moveTo(Square square) {////////////////////////////////////////////////
-		//TODO: Set IsEnpassantable
-		 /* if((this.getSquare().getY() - getBoard().getSquare(2, 6).getY() == -2) && this.getColor() == "white") {
-			setEnpassantable(true);
-		  }
-		  else if(this.getSquare().getY() == 2 && this.getColor() == "black") {
-			  setEnpassantable(true);
-		  }
-		  if(this.getSquare().getY() != 5 && this.getColor() == "white") {
-			  setEnpassantable(false);
-		  }
-		  else if(this.getSquare().getY() != 2 && this.getColor() == "black") {
-			  setEnpassantable(false);
-		  }*/
-		super.moveTo(square);
-	}
 
-	
 }

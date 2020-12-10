@@ -71,8 +71,9 @@ public class Square extends Label {
 			previousPiece.getMoves().forEach(Square::setDefaultColor);	
 			if (previousPiece.canMoveTo(this) && board.doesMovingPieceReturnCheck(previousPiece, this) == false) {
 				previousPiece.moveTo(this);
-				//TODO: set all enemy pawn's isEnpassantable to false
+				//sets all enemy pawn's isEnpassantable to false
 				if(previousPiece instanceof Pawn) {
+					//makes ssure that piece can only become enpassantable if it has moved two squares in one turn
 					if((previousPiece.getSquare().getY() - previousPieceY == 2)||(previousPiece.getSquare().getY() - previousPieceY == -2))// here should be also -2 to account for if white pawn moves up 2 which results in (row4-row6) 
 					{
 						previousPiece.setEnpassantable(true);
