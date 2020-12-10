@@ -138,7 +138,6 @@ public class Board extends GridPane {
 				EndScreen end = new EndScreen();
 				end.displayEndScreenPopup();
 				resetGame();
-				
 			} else {
 				alert.setTitle("Check");
 				alert.setHeaderText(getTurnColor() + " is in check");
@@ -151,8 +150,8 @@ public class Board extends GridPane {
 			alert.showAndWait();
 			EndScreen end = new EndScreen();
 			end.displayEndScreenPopup();
+			resetGame();
 		}
-		
 	}
 	public Square getSquare(int x, int y) {
 		return squares[y * 8 + x];
